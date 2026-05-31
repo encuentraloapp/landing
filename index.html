@@ -965,7 +965,7 @@ function registerModal(){
   var surname=(document.getElementById("m-surname")||{value:""}).value.trim();
   var email=(document.getElementById("m-email")||{value:""}).value.trim().toLowerCase();
   var city=(document.getElementById("m-city")?.value||"").trim();
-  var news=(document.getElementById("m-news")?.checked)?true:false;
+  var news=(document.getElementById("m-news")?.checked)?"Sí":"No";
 
   if(!name){showModalError("Introduce tu nombre para continuar.");return;}
   var ev=validarEmail(email);
@@ -981,8 +981,7 @@ function registerModal(){
     apellido:surname,
     email:email,
     ciudad:city,
-    aceptaNovedades:news?"sí":"no",
-    origen:"modal"
+    aceptaNovedades:news,
   },function(){
     done.add(email);
     var wrap=document.getElementById("modal-form-wrap");if(wrap)wrap.style.display="none";
@@ -1003,7 +1002,7 @@ function register(p){
   var surname=(document.getElementById(p+"-surname")?.value||"").trim();
   var email=(document.getElementById(p+"-email")?.value||"").trim().toLowerCase();
   var city=(document.getElementById(p+"-city")?.value||"").trim();
-  var news=(document.getElementById(p+"-news")?.checked)?true:false;
+  var news=(document.getElementById(p+"-news")?.checked)?"Sí":"No";
 
   if(!name){toast("Introduce tu nombre para continuar.");return;}
   var ev=validarEmail(email);
@@ -1022,8 +1021,7 @@ function register(p){
     apellido:surname,
     email:email,
     ciudad:city,
-    aceptaNovedades:news?"sí":"no",
-    origen:"cta-final"
+    aceptaNovedades:news,
   },function(){
     done.add(email);cnt++;
     const cel=document.getElementById("counter");if(cel)cel.textContent=cnt;
