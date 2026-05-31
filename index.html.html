@@ -43,8 +43,8 @@ nav.s{background:rgba(6,6,6,.92);backdrop-filter:blur(28px);border-bottom:1px so
 @keyframes slowPulse{0%,100%{opacity:.5}50%{opacity:1}}
 
 /* Dos columnas */
-.hero-left{flex:1;display:flex;flex-direction:column;align-items:flex-start;position:relative;z-index:1;}
-.hero-right{width:340px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-left:64px;}
+.hero-left{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;position:relative;z-index:1;}
+.hero-right{flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-left:56px;}
 
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,25,44,.08);border:1px solid rgba(232,25,44,.2);color:var(--r);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:7px 16px;border-radius:30px;margin-bottom:28px;animation:up .9s ease both;}
 .bdot{width:5px;height:5px;border-radius:50%;background:var(--r);animation:blink 2s ease infinite;}
@@ -74,7 +74,7 @@ nav.s{background:rgba(6,6,6,.92);backdrop-filter:blur(28px);border-bottom:1px so
 .proof-txt{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:.2px;}
 
 /* MOCKUP */
-.hero-mockup{width:280px;height:500px;background:var(--n2);border:1px solid var(--border);border-radius:40px;position:relative;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04),0 0 80px rgba(232,25,44,.08);animation:up .9s ease .15s both;}
+.hero-mockup{width:240px;max-width:240px;height:460px;background:var(--n2);border:1px solid var(--border);border-radius:38px;position:relative;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04),0 0 80px rgba(232,25,44,.08);animation:up .9s ease .15s both;}
 .hero-mockup::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:22px;background:var(--n);border-radius:0 0 14px 14px;z-index:10;}
 .mockup-inner{padding:36px 16px 20px;height:100%;display:flex;flex-direction:column;gap:10px;}
 .mockup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
@@ -254,7 +254,7 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
 .ms-card:hover{border-color:rgba(232,25,44,.4);transform:translateY(-5px);box-shadow:0 8px 48px rgba(232,25,44,.14),0 0 0 1px rgba(232,25,44,.06);}
 .ms-card:hover::before{opacity:1;}
 .ms-card:active{transform:translateY(-2px);}
-.ms-ico{font-size:30px;margin-bottom:20px;display:block;}
+.ms-ico-dot{width:10px;height:10px;border-radius:50%;background:var(--r);margin-bottom:24px;box-shadow:0 0 14px rgba(232,25,44,.5);}
 .ms-title{font-family:"Syne",sans-serif;font-size:19px;font-weight:800;margin-bottom:10px;color:var(--w);}
 .ms-desc{font-size:14px;color:rgba(255,255,255,.3);line-height:1.75;}
 .ms-quote{border-top:1px solid var(--border);padding-top:48px;text-align:center;}
@@ -265,6 +265,13 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
 .enc-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:100px;padding:12px 22px;font-size:14px;font-weight:600;color:rgba(255,255,255,.55);cursor:default;transition:background .25s,border-color .25s,color .25s,box-shadow .25s,transform .2s;}
 .enc-chip:hover{background:rgba(232,25,44,.08);border-color:rgba(232,25,44,.35);color:rgba(255,255,255,.9);box-shadow:0 0 20px rgba(232,25,44,.12);transform:translateY(-2px);}
 
+
+@media(max-width:900px) and (min-width:701px){
+  #hero{padding:100px 28px 64px;}
+  .hero-right{margin-left:32px;}
+  .hero-mockup{width:200px;max-width:200px;height:380px;}
+  .hero-title{font-size:clamp(38px,5.5vw,68px);}
+}
 
 @media(max-width:700px){
 
@@ -548,17 +555,17 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
 
     <div class="ms-grid">
       <div class="ms-card rv">
-        <span class="ms-ico">🔍</span>
+        <div class="ms-ico-dot"></div>
         <div class="ms-title">Transparencia</div>
         <div class="ms-desc">Recomendaciones claras, sin promesas falsas ni datos inventados.</div>
       </div>
       <div class="ms-card rv d1">
-        <span class="ms-ico">🔒</span>
+        <div class="ms-ico-dot"></div>
         <div class="ms-title">Privacidad</div>
         <div class="ms-desc">Respeto por los datos y las preferencias de cada usuario.</div>
       </div>
       <div class="ms-card rv d2">
-        <span class="ms-ico">🎯</span>
+        <div class="ms-ico-dot"></div>
         <div class="ms-title">Decidir mejor</div>
         <div class="ms-desc">No se trata de empujar a consumir, sino de ayudar a elegir con más claridad.</div>
       </div>
@@ -932,7 +939,7 @@ function closeModal(){
   document.body.style.overflow="";
 }
 // ── URL GOOGLE APPS SCRIPT ──
-var GAS_URL="https://script.google.com/macros/s/AKfycbx9tdW3YtQIjCep9tow-jqL0GsFjZByePyEqPlNPvqk1opuWW7Z1XzhkTDlF-f863KJFg/exec";
+var GAS_URL="https://script.google.com/macros/s/AKfycbyoyz1AcmhPWikZ-NpfGF7J1xFXLT_s-ngqiY8o06WeEGUvp4TRT3743Ax-7oy3f0wzzw/exec";
 
 function enviarASheets(datos,onOk,onErr){
   // Google Apps Script lee FormData con e.parameter.campo
