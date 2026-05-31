@@ -982,9 +982,8 @@ function registerModal(){
     email:email,
     ciudad:city,
     aceptaNovedades:news,
-  },function(){
-    done.add(email);
-    var wrap=document.getElementById("modal-form-wrap");if(wrap)wrap.style.display="none";
+    origen:"modal"
+  },function(){if(wrap)wrap.style.display="none";
     var ok=document.getElementById("m-ok");if(ok)ok.classList.add("show");
     if(btn){btn.disabled=false;btn.textContent="✦ Unirme al preregistro";}
   },function(){
@@ -1022,8 +1021,8 @@ function register(p){
     email:email,
     ciudad:city,
     aceptaNovedades:news,
+    origen:"cta-final"
   },function(){
-    done.add(email);cnt++;
     const cel=document.getElementById("counter");if(cel)cel.textContent=cnt;
     document.getElementById(p+"-ok").classList.add("show");
     ["name","surname","email"].forEach(f=>{const el=document.getElementById(p+"-"+f);if(el)el.value="";});
