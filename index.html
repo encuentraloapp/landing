@@ -308,7 +308,12 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
   .logo-img{width:120px;height:120px;}
 
   /* LETRAS */
-  #letras{padding:64px 20px;}
+  #letras{padding:56px 16px;}
+  .letras-word{font-size:clamp(28px,8.5vw,40px);letter-spacing:-1px;flex-wrap:nowrap;overflow:visible;}
+  .letras-hint{display:none;}
+  .letra{color:rgba(255,255,255,.55);pointer-events:none;transition:none;transform:none !important;text-shadow:none !important;}
+  .letra:hover,.letra.lit{color:rgba(255,255,255,.55);text-shadow:none;transform:none;}
+
 
   /* PROBLEMA */
   #problema{padding:80px 20px;}
