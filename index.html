@@ -311,8 +311,10 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
   #letras{padding:56px 16px;}
   .letras-word{font-size:clamp(28px,8.5vw,40px);letter-spacing:-1px;flex-wrap:nowrap;overflow:visible;}
   .letras-hint{display:none;}
-  .letra{color:rgba(255,255,255,.55);pointer-events:none;transition:none;transform:none !important;text-shadow:none !important;}
-  .letra:hover,.letra.lit{color:rgba(255,255,255,.55);text-shadow:none;transform:none;}
+  .letra{color:rgba(255,255,255,.15);pointer-events:none;transition:color .3s,text-shadow .3s;animation:none !important;transform:none !important;}
+  .letra:hover{color:rgba(255,255,255,.15);text-shadow:none;transform:none;}
+  .letra.lit{color:rgba(255,255,255,.15);text-shadow:none;transform:none;}
+  .letras-word.touch-active .letra{color:var(--r);text-shadow:0 0 28px rgba(232,25,44,.65),0 0 56px rgba(232,25,44,.25);}
 
 
   /* PROBLEMA */
