@@ -76,13 +76,13 @@ nav.s{background:rgba(6,6,6,.92);backdrop-filter:blur(28px);border-bottom:1px so
 /* MOCKUP */
 .hero-mockup{width:170px;max-width:170px;height:350px;background:var(--n2);border:1px solid var(--border);border-radius:30px;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04),0 0 60px rgba(232,25,44,.08);animation:up .9s ease .15s both;}
 .hero-mockup::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:22px;background:var(--n);border-radius:0 0 14px 14px;z-index:10;}
-.mockup-inner{padding:36px 16px 20px;height:100%;display:flex;flex-direction:column;gap:10px;}
-.mockup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
-.mockup-logo{font-family:"Pacifico",cursive;font-size:14px;color:var(--r);}
-.mockup-loc{font-size:10px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:4px;}
-.mockup-search{background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(255,255,255,.25);}
-.mockup-chips{display:flex;gap:6px;flex-wrap:wrap;}
-.mockup-chip{background:rgba(232,25,44,.12);border:1px solid rgba(232,25,44,.2);border-radius:20px;padding:4px 10px;font-size:9px;font-weight:600;color:var(--r);letter-spacing:.5px;}
+.mockup-inner{padding:32px 14px 16px;height:100%;display:flex;flex-direction:column;gap:9px;}
+.mockup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06);}
+.mockup-logo{font-family:"Pacifico",cursive;font-size:13px;color:var(--r);letter-spacing:.3px;}
+.mockup-loc{font-size:9px;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:3px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:3px 8px;}
+.mockup-search{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 11px;font-size:10px;color:rgba(255,255,255,.2);}
+.mockup-chips{display:flex;gap:5px;flex-wrap:nowrap;overflow:hidden;}
+.mockup-chip{background:rgba(232,25,44,.1);border:1px solid rgba(232,25,44,.18);border-radius:20px;padding:3px 9px;font-size:8px;font-weight:600;color:var(--r);letter-spacing:.4px;white-space:nowrap;}
 .mockup-chip.active{background:var(--r);color:white;border-color:var(--r);}
 .mockup-cards{display:flex;flex-direction:column;gap:8px;flex:1;}
 .mockup-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:12px;display:flex;gap:10px;align-items:center;}
@@ -294,6 +294,8 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
   .hero-cta-row .btn-main{width:100%;max-width:320px;text-align:center;}
   .proof{justify-content:center;}
   .hero-mockup{width:150px;max-width:150px;height:300px;border-radius:26px;}
+  .hero-right{position:relative;}
+  .hero-right::after{content:"";position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--n));pointer-events:none;z-index:2;border-radius:0 0 26px 26px;}
 
   /* STATS */
   .stats-grid{grid-template-columns:repeat(2,1fr);}
