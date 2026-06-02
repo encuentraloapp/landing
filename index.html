@@ -309,12 +309,11 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
 
   /* LETRAS */
   #letras{padding:56px 16px;}
-  .letras-word{font-size:clamp(28px,8.5vw,40px);letter-spacing:-1px;flex-wrap:nowrap;overflow:visible;}
+  .touch-glow-word{font-size:clamp(28px,8.5vw,40px);letter-spacing:-1px;flex-wrap:nowrap;overflow:visible;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;}
   .letras-hint{display:none;}
   .letra{color:rgba(255,255,255,.15);pointer-events:none;transition:color .3s,text-shadow .3s;animation:none !important;transform:none !important;}
-  .letra:hover{color:rgba(255,255,255,.15);text-shadow:none;transform:none;}
-  .letra.lit{color:rgba(255,255,255,.15);text-shadow:none;transform:none;}
-  .letras-word.touch-active .letra{color:var(--r);text-shadow:0 0 28px rgba(232,25,44,.65),0 0 56px rgba(232,25,44,.25);}
+  .letra:hover,.letra.lit{color:rgba(255,255,255,.15);text-shadow:none;transform:none;}
+  .touch-glow-word.is-glowing .letra{color:var(--r);text-shadow:0 0 28px rgba(232,25,44,.7),0 0 56px rgba(232,25,44,.3);}
 
 
   /* PROBLEMA */
@@ -519,7 +518,7 @@ footer{border-top:1px solid var(--border);padding:36px 32px;display:flex;align-i
 <!-- ═══ LETRAS ═══ -->
 <div id="letras">
   <span class="letras-hint rv">Pasa el dedo o el ratón por las letras</span>
-  <div class="letras-word rv">
+  <div class="letras-word rv touch-glow-word">
     <span class="letra" data-em="🗺️">E</span><span class="letra" data-em="📍">n</span><span class="letra" data-em="💸">c</span><span class="letra" data-em="🍻">u</span><span class="letra" data-em="✨">é</span><span class="letra" data-em="🎯">n</span><span class="letra" data-em="🏃">t</span><span class="letra" data-em="❤️">r</span><span class="letra" data-em="🔴">a</span><span class="letra" data-em="🎉">l</span><span class="letra" data-em="🚀">o</span>
   </div>
   <p class="letras-sub rv">Cada letra, un plan esperándote</p>
@@ -881,7 +880,7 @@ document.querySelectorAll(".letra").forEach(el=>{
   el.addEventListener("touchstart",e=>{e.preventDefault();go();},{passive:false});
 });
 let lastIdx=-1;
-document.querySelector(".letras-word").addEventListener("touchmove",e=>{
+document.querySelector(".touch-glow-word").addEventListener("touchmove",e=>{
   const t=e.touches[0];
   const el=document.elementFromPoint(t.clientX,t.clientY);
   if(el&&el.classList.contains("letra")){
@@ -889,6 +888,21 @@ document.querySelector(".letras-word").addEventListener("touchmove",e=>{
     if(idx!==lastIdx){lastIdx=idx;el.classList.add("lit");spawnEmoji(el,el.dataset.em);setTimeout(()=>el.classList.remove("lit"),600);}
   }
 },{passive:true});
+
+// ── TOUCH GLOW PALABRA (móvil) ──
+(function(){
+  var word = document.querySelector(".touch-glow-word");
+  if(!word) return;
+  var glowTimer = null;
+  function activarGlow(e){
+    try{if(e&&e.cancelable)e.preventDefault();}catch(err){}
+    word.classList.add("is-glowing");
+    clearTimeout(glowTimer);
+    glowTimer = setTimeout(function(){word.classList.remove("is-glowing");},1500);
+  }
+  word.addEventListener("touchstart",activarGlow,{passive:false});
+  word.addEventListener("click",activarGlow,false);
+})();
 
 function spawnEmoji(el,em){
   const r=el.getBoundingClientRect();
